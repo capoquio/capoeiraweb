@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>글수정</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script type="text/javascript" th:src="@{/js/updatemain.js}"></script>
+</head>
+<body>
+<th:block th:include="inc/header :: header"></th:block>
+
+<div class="container my-5">
+  <h1 class="text-center">글수정</h1>
+
+  <form action="/capoeiraweb/update" method="post" name="updateForm">
+    <div class="form-group">
+      <input type="hidden" id="board-pass" th:value="${boardUpdate.boardPass}"/>
+      <input type="hidden" name="id" th:value="${boardUpdate.id}">
+      <label for="boardWriter">작성자:</label>
+      <input type="text" class="form-control" name="boardWriter" id="boardWriter" th:value="${boardUpdate.boardWriter}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="boardPass">비밀번호:</label>
+      <input type="password" class="form-control" name="boardPass" id="boardPass">
+    </div>
+
+    <div class="form-group">
+      <label for="boardTitle">제목:</label>
+      <input type="text" class="form-control" name="boardTitle" id="boardTitle" th:value="${boardUpdate.boardTitle}">
+    </div>
+
+    <div class="form-group">
+      <label for="boardContents">내용:</label>
+      <textarea class="form-control" name="boardContents" id="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}"></textarea>
+    </div>
+
+    <input type="hidden" name="boardHits" th:value="${boardUpdate.boardHits}">
+    <button type="button" class="btn btn-primary" onclick="boardUpdate()">글수정</button>
+  </form>
+</div>
+
+
+<footer class="text-center border-top container mt-5">
+  capoeira - pinoquio
+</footer>
+</body>
+</html>
