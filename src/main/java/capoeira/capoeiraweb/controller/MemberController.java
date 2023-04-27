@@ -64,4 +64,10 @@ public class MemberController {
             return "no";
         }
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 }
+

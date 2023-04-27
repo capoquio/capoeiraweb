@@ -1,91 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/layout.html">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- jquery cdn -->
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script type="text/javascript" th:src="@{/js/detailmain.js}"></script>
   <!-- css 링크 코드 -->
   <link rel="stylesheet" th:href="@{/css/detail.css}">
-
-  <title>detail</title>
 </head>
 <body>
-<th:block th:include="inc/header :: header"></th:block>
+<div layout:fragment="content">
+  <div class="table-container">
+    <table>
+      <!-- HTML 파일에 Thymeleaf 변수 저장 -->
+      <input type="hidden" id="board-id" th:value="${board.id}">
+      <input type="hidden" id="page" th:value="${page}">
+      <!-- 테이블 내용 -->
+      <tr>
+        <th>NO</th>
+        <td th:text="${board.id}"></td>
+      </tr>
+      <tr>
+        <th>제목</th>
+        <td th:text="${board.boardTitle}"></td>
+      </tr>
+      <tr>
+        <th>작성자</th>
+        <td th:text="${board.boardWriter}"></td>
+      </tr>
+      <tr>
+        <th>작성시간</th>
+        <td th:text="${board.boardCreatedTime}"></td>
+      </tr>
+      <tr>
+        <th>조회수</th>
+        <td th:text="${board.boardHits}"></td>
+      </tr>
+      <tr>
+        <th>내용</th>
+        <td th:text="${board.boardContents}"></td>
+      </tr>
+      <tr th:if="${board.fileAttached == 1}">
+        <th>image</th>
+        <td th:each="fileName: ${board.storedFileName}">
+          <img class="board-img" th:src="@{|/upload/${fileName}|}" alt="">
+        </td>
+      </tr>
+    </table>
+    <!-- 버튼 그룹 -->
+    <div class="button-group">
+      <button onclick="listReq()">목록</button>
+      <button onclick="updateReq()">수정</button>
+      <button onclick="deleteReq()">삭제</button>
+    </div>
+    <!-- 댓글 출력 부분 -->
+    <div id="comment-list">
+      <table style="margin: 0 auto;">
+        <tr>
+          <th>댓글 번호</th>
+          <th>작성자</th>
+          <th>내용</th>
+          <th>작성시간</th>
+        </tr>
+        <tr th:each="comment: ${commentList}">
+          <td th:text="${comment.id}"></td>
+          <td th:text="${comment.commentWriter}"></td>
+          <td th:text="${comment.commentContents}"></td>
+          <td th:text="${comment.commentCreatedTime}"></td>
+        </tr>
+      </table>
+    </div>
+    <!-- 댓글 작성 부분 -->
+    <div style="display:flex; justify-content: center; margin: 10px;">
+      <input type="text" id="commentWriter" placeholder="작성자" th:value="${session.loginNickname}" readonly>
+      <input type="text" id="commentContents" placeholder="내용">
+      <button id="comment-write-btn">댓글작성</button>
+    </div>
 
-<div class="table-container">
-  <table>
-    <!-- HTML 파일에 Thymeleaf 변수 저장 -->
-    <input type="hidden" id="board-id" th:value="${board.id}">
-    <input type="hidden" id="page" th:value="${page}">
-    <!-- 테이블 내용 -->
-    <tr>
-      <th>NO</th>
-      <td th:text="${board.id}"></td>
-    </tr>
-    <tr>
-      <th>제목</th>
-      <td th:text="${board.boardTitle}"></td>
-    </tr>
-    <tr>
-      <th>작성자</th>
-      <td th:text="${board.boardWriter}"></td>
-    </tr>
-    <tr>
-      <th>작성시간</th>
-      <td th:text="${board.boardCreatedTime}"></td>
-    </tr>
-    <tr>
-      <th>조회수</th>
-      <td th:text="${board.boardHits}"></td>
-    </tr>
-    <tr>
-      <th>내용</th>
-      <td th:text="${board.boardContents}"></td>
-    </tr>
-    <tr th:if="${board.fileAttached == 1}">
-      <th>image</th>
-      <td th:each="fileName: ${board.storedFileName}">
-        <img class="board-img" th:src="@{|/upload/${fileName}|}" alt="">
-      </td>
-    </tr>
-  </table>
-<!-- 버튼 그룹 -->
-<div class="button-group">
-  <button onclick="listReq()">목록</button>
-  <button onclick="updateReq()">수정</button>
-  <button onclick="deleteReq()">삭제</button>
+  </div>
 </div>
-<!-- 댓글 출력 부분 -->
-<div id="comment-list">
-  <table style="margin: 0 auto;">
-    <tr>
-      <th>댓글 번호</th>
-      <th>작성자</th>
-      <th>내용</th>
-      <th>작성시간</th>
-    </tr>
-    <tr th:each="comment: ${commentList}">
-      <td th:text="${comment.id}"></td>
-      <td th:text="${comment.commentWriter}"></td>
-      <td th:text="${comment.commentContents}"></td>
-      <td th:text="${comment.commentCreatedTime}"></td>
-    </tr>
-  </table>
-</div>
-<!-- 댓글 작성 부분 -->
-<div style="display:flex; justify-content: center; margin: 10px;">
-  <input type="text" id="commentWriter" placeholder="작성자" th:value="${session.loginNickname}" readonly>
-  <input type="text" id="commentContents" placeholder="내용">
-  <button id="comment-write-btn">댓글작성</button>
-</div>
-
-</div>
-<footer class="text-center border-top container mt-5">
-  capoeira - pinoquio
-</footer>
+</body>
 </body>
 </html>

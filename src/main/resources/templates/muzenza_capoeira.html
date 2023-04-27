@@ -1,40 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <title>MUZENZA Capoeira</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/layout.html">
 <body>
-<th:block th:include="inc/header :: header"></th:block>
+<div layout:fragment="content">
+    <img src="/img/muzenzalogo.png" style="display: block; margin: 0 auto;width:245px; height:200px;"><br>
+    <img src="/img/muzenza jogo.jpg" style="display: block; margin: 0 auto;width:1300px; height:500px;">
 
-<img src="/img/muzenzalogo.png" style="display: block; margin: 0 auto;width:245px; height:200px;"><br>
-<img src="/img/muzenza jogo.jpg" style="display: block; margin: 0 auto;width:1300px; height:500px;">
-
-<div style="text-align: center;">
-    <h2>무젠자 카포에이라의 역사</h2>
-    <br>
-    <p>
-        Grupo Muzenza de Capoeira는 Mestre Mintirinha(Luís Américo da Silva) 그룹인 Capoarte de Obaluaê의 Paulo Sérgio da Silv<br>
-        a(Mestre Paulão)가 1972년 5월 5일에 설립했습니다.<br>
-        1975년 10월 Mestre BurguGrupo Muzenza de Capoeira는 Mestre Mintirinha(Luís Américo da Silva) 그룹인 Capoarte de Oba<br>
-        luaê의 Paulo Sérgio da Silva(Mestre Paulão)가 1972년 5월 5일에 설립했습니다.
+    <div style="text-align: center;">
+        <h2>무젠자 카포에이라의 역사</h2>
         <br>
-        1975년 10월 Mestre Burgues(Antonio Carlos de Menezes)가 CuritibaParaná에 도착했습니다. 리우데자네이루의 Méier와 Mad<br>
-        ureira 지역에서 가르치는 Mestre Burgues는 브라질 남부에 새로운 Grupo Muzenza 지점을 설립하기로 결정하고 자신의 방법<br>
-        론과 철학을 확립하고 개발하여 카포에라의 뿌리로 돌아가 경제적으로 소외된 지역 사회에서 동아리, 학교, 학원에서 그는 가<br>
-        르침으로 시작했습니다. Mestre Burgues는 1975년부터 Grupo Muzenza를 이끌고 있습니다.es(Antonio Carlos de Menezes)가<br>
-        CuritibaParaná에 도착했습니다. 리우데자네이루의 Méier와 Madureira 지역에서 가르치는 Mestre Burgues는 브라질 남부에 새<br>
-        로운 Grupo Muzenza 지점을 설립하기로 결정하고 자신의 방법론과 철학을 확립하고 개발하여 카포에라의 뿌리로 돌아가 경<br>
-        제적으로 소외된 지역 사회에서 동아리, 학교, 학원에서 그는 가르침으로 시작했습니다. Mestre Burgues는 1975년부터 Grupo<br>
-        Muzenza를 이끌고 있습니다.
-    </p>
+        <p>
+            Grupo Muzenza de Capoeira는 Mestre Mintirinha(Luís Américo da Silva) 그룹인 Capoarte de Obaluaê의 Paulo Sérgio da Silv<br>
+            a(Mestre Paulão)가 1972년 5월 5일에 설립했습니다.<br>
+            1975년 10월 Mestre BurguGrupo Muzenza de Capoeira는 Mestre Mintirinha(Luís Américo da Silva) 그룹인 Capoarte de Oba<br>
+            luaê의 Paulo Sérgio da Silva(Mestre Paulão)가 1972년 5월 5일에 설립했습니다.
+            <br>
+            1975년 10월 Mestre Burgues(Antonio Carlos de Menezes)가 CuritibaParaná에 도착했습니다. 리우데자네이루의 Méier와 Mad<br>
+            ureira 지역에서 가르치는 Mestre Burgues는 브라질 남부에 새로운 Grupo Muzenza 지점을 설립하기로 결정하고 자신의 방법<br>
+            론과 철학을 확립하고 개발하여 카포에라의 뿌리로 돌아가 경제적으로 소외된 지역 사회에서 동아리, 학교, 학원에서 그는 가<br>
+            르침으로 시작했습니다. Mestre Burgues는 1975년부터 Grupo Muzenza를 이끌고 있습니다.es(Antonio Carlos de Menezes)가<br>
+            CuritibaParaná에 도착했습니다. 리우데자네이루의 Méier와 Madureira 지역에서 가르치는 Mestre Burgues는 브라질 남부에 새<br>
+            로운 Grupo Muzenza 지점을 설립하기로 결정하고 자신의 방법론과 철학을 확립하고 개발하여 카포에라의 뿌리로 돌아가 경<br>
+            제적으로 소외된 지역 사회에서 동아리, 학교, 학원에서 그는 가르침으로 시작했습니다. Mestre Burgues는 1975년부터 Grupo<br>
+            Muzenza를 이끌고 있습니다.
+        </p>
+    </div>
 </div>
-<footer class="text-center border-top container mt-5">
-    capoeira - pinoquio
-</footer>
 </body>
 </html>
+
