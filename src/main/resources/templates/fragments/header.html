@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="headerFragment">
+      <head>
+        <link rel="stylesheet" th:href="@{/css/header.css}">
+      </head>
+          <nav th:fragment="headerFragment" class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand" href="/">Capoeira</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="mynavbar">
+                <!-- 아바다 카포에이라와 무젠자 카포에이라의 각각 따로 드롭다운 만듬 -->
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="abadaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      ABADA Capoeira
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="abadaDropdown">
+                      <li><a class="dropdown-item" href="/capoeiraweb/abada">ABADA의 역사</a></li>
+                      <li><a class="dropdown-item" href="/capoeiraweb/abadamap">ABADA 서울지부</a></li>
+                      <li><a class="dropdown-item" href="/capoeiraweb/abadamapp">ABADA 부천지부</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="muzenzaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      MUZENZA Capoeira
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="muzenzaDropdown">
+                      <li><a class="dropdown-item" href="/capoeiraweb/muzenza">MUZENZA의 역사</a></li>
+                      <li><a class="dropdown-item" href="/capoeiraweb/muzenzamap">MUZENZA 서울지부</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/capoeiraweb/paging">커뮤니티</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                  <li th:if="${session.loginNickname}">
+                    <span class="nav-link" th:text="${session.loginNickname}"></span>
+                  </li>
+                  <li th:unless="${session.loginNickname}">
+                    <a class="nav-link" href="/capoeiraweb/login">로그인</a>
+                  </li>
+                  <li th:if="${session.loginNickname}">
+                    <a class="nav-link" href="/capoeiraweb/logout">로그아웃</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </th:block>
+</html>
