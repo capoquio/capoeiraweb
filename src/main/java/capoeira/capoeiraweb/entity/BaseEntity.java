@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 public class BaseEntity {
     @CreationTimestamp
-    @Column(updatable = false) //updatable :
+    @Column(updatable = false) //updatable : 수정한 이후 기존에 저장되어 있던 데이터를 수정할 수 없게끔 막는다.
     private LocalDateTime createdTime;
 
     @UpdateTimestamp
