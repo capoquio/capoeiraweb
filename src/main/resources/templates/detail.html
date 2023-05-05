@@ -17,6 +17,10 @@
       <!-- HTML 파일에 Thymeleaf 변수 저장 -->
       <input type="hidden" id="board-id" th:value="${board.id}">
       <input type="hidden" id="page" th:value="${page}">
+
+      <!-- 세션의 닉네임 값 추가  05-05 수정-->
+      <input type="hidden" id="nickname" th:value="${nickname}">
+
       <!-- 테이블 내용 -->
       <tr>
         <th>NO</th>
@@ -53,7 +57,7 @@
     <div class="button-group">
       <button onclick="listReq()">목록</button>
       <button onclick="updateReq()">수정</button>
-      <button onclick="deleteReq()">삭제</button>
+      <button  th:href="${session.loginNickname != null} ? '/capoeiraweb/delete/{id}' : '/capoeiraweb/login'" onclick="deleteReq()">삭제</button>
     </div>
     <!-- 댓글 출력 부분 -->
     <div id="comment-list">

@@ -51,5 +51,18 @@ const updateReq = () => {
 const deleteReq = () => {
   console.log("삭제 요청");
   const id = Number($('#board-id').val());
-  location.href = "/capoeiraweb/delete/" + id;
+
+  // 세션에서 닉네임 가져오기 05-05수정
+  const nickname = $("#nickname").val();
+
+  if (nickname) {
+      // 세션에 닉네임이 저장되어 있으면 글삭제 요청 보내기
+      location.href = "/capoeiraweb/delete/" + id;
+      console.log("nickname" , nickname);
+  } else {
+    // 세션에 닉네임이 저장되어 있지 않으면 메시지 띄우기
+    alert("로그인이 필요합니다");
+    location.href = "/capoeiraweb/login";
+
+  }
 }

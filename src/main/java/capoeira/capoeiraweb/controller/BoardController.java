@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -44,12 +45,18 @@ public class BoardController {
 
     @GetMapping("/{id}")
     public String findById(@PathVariable long id, Model model,
-                           @PageableDefault(page=1) Pageable pageable) {
+                           @PageableDefault(page=1) Pageable pageable,
+                           HttpSession session) {
 
         /*
             해당 게시글의 조회수를 하나 올리고
             게시글 데이터를 가져와서 detail.html에 출력
          */
+
+        //새로 추가 05-05 수정
+        String nickname = (String)session.getAttribute("loginNickname");
+        model.addAttribute("nickname", nickname);
+        
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         /* 댓글 목록 가져오기 */
