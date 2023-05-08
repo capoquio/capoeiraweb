@@ -26,12 +26,12 @@ public class HederController {
         return "abada_capoeiramapp";
     }
 
-    //수업시간 및 수업가격 추가
+    //서울센터 수업시간 및 수업가격 추가
     @GetMapping("/abadamappp")
     public String abadamappp() {
         return "abada_capoeiramappp";
     }
-    //수업시간 및 수업가격 추가
+    // 부천센터 수업시간 및 수업가격 추가
     @GetMapping("/abadamapppp")
     public String abadamapppp() {
         return "abada_capoeiramapppp";
