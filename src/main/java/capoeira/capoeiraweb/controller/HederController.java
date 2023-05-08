@@ -25,6 +25,18 @@ public class HederController {
     public String abadamapp() {
         return "abada_capoeiramapp";
     }
+
+    @GetMapping("/abadamappp")
+    public String abadamappp() {
+        return "abada_capoeiramappp";
+    }
+
+    @GetMapping("/abadamapppp")
+    public String abadamapppp() {
+        return "abada_capoeiramapppp";
+    }
+
+
     //무젠자 카포에이라 페이지 출력 요청
     @GetMapping("/muzenza")
     public String muzenza() {
