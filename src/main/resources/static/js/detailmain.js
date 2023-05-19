@@ -10,6 +10,15 @@
       // 게시글 번호 가져옴
       const boardId = Number($('#board-id').val());
 
+      // 로그인 여부 확인
+      const nickname = $('#nickname').val();
+      if (!nickname || writer.trim() === '') {
+        // 작성자가 비어있거나 로그인되어 있지 않으면 댓글 작성 막기
+        // 필요한 경우 메시지를 출력하거나 원하는 동작을 수행할 수 있습니다.
+        console.log('댓글 작성을 막습니다. 작성자를 입력해주세요.');
+        return;
+      }
+
       // 댓글작성 요청 보냄
       $.ajax({
         type: 'POST',
@@ -24,7 +33,7 @@
           $('#comment-list').load(' #comment-list > *');
 
           // 작성자와 내용 입력칸 초기화
-          //$('#commentWriter').val(''); //작성자 입력칸을 초기화하는 js문법
+          $('#commentWriter').val('');
           $('#commentContents').val('');
         },
         error: function(err) {
@@ -33,6 +42,8 @@
       });
     });
   });
+
+
 
 const listReq = () => {
   console.log("목록 요청");
