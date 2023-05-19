@@ -5,7 +5,7 @@ import capoeira.capoeiraweb.entity.BoardFileEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,16 +24,16 @@ public class BoardDTO {
     //조회수
     private int boardHits;
     //게시글 작성 시간
-    private LocalDateTime boardCreatedTime;
+    private LocalDate boardCreatedTime;
     //게시글 수정 후 시간
-    private LocalDateTime boardUpdatedTime;
+    private LocalDate boardUpdatedTime;
     //새로 추가 파일 첨부
     private List<MultipartFile> boardFile; // save.html -> Controller 파일 담는 용도
     private List<String> originalFileName; // 원본 이름
     private List<String> storedFileName;   //서버 저장용 파일 이름
     private int FileAttached; // 파일 첨부 여부 (첨부 1, 미첨부 0)
     
-    public BoardDTO(Long id, String boardWriter, String boardTitle, int boardHits, LocalDateTime boardCreatedTime) {
+    public BoardDTO(Long id, String boardWriter, String boardTitle, int boardHits, LocalDate boardCreatedTime) {
         this.id = id;
         this.boardWriter = boardWriter;
         this.boardTitle = boardTitle;
