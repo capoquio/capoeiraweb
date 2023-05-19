@@ -59,6 +59,12 @@
       <button onclick="updateReq()">수정</button>
       <button onclick="deleteReq()">삭제</button>
     </div>
+    <!-- 댓글 작성 부분 -->
+    <div style="display:flex; justify-content: center; margin: 10px;">
+      <input type="text" id="commentWriter" placeholder="작성자" th:value="${session.loginNickname}" readonly>
+      <input type="text" id="commentContents" placeholder="내용">
+      <button id="comment-write-btn">댓글작성</button>
+    </div>
     <!-- 댓글 출력 부분 -->
     <div id="comment-list">
       <table style="margin: 0 auto;">
@@ -76,13 +82,6 @@
         </tr>
       </table>
     </div>
-    <!-- 댓글 작성 부분 -->
-    <div style="display:flex; justify-content: center; margin: 10px;">
-      <input type="text" id="commentWriter" placeholder="작성자" th:value="${session.loginNickname}" readonly>
-      <input type="text" id="commentContents" placeholder="내용">
-      <button id="comment-write-btn">댓글작성</button>
-    </div>
-
   </div>
 </div>
 </body>
