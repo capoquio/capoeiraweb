@@ -62,10 +62,10 @@
     <!-- 댓글 작성 부분 -->
     <div style="display:flex; justify-content: center; margin: 10px;">
       <!-- 작성자가 로그인한 경우에만 댓글 작성 가능 -->
+      <button onclick="loginRedirect()" th:unless="${nickname}">로그인이 필요합니다.</button>
       <input type="text" id="commentWriter" placeholder="작성자" th:if="${nickname}" th:value="${session.loginNickname}" readonly>
       <input type="text" id="commentContents" placeholder="내용">
       <button id="comment-write-btn" th:if="${nickname}">댓글작성</button>
-      <button onclick="loginRedirect()" th:unless="${nickname}">로그인이 필요합니다.</button>
     </div>
     <!-- 댓글 출력 부분 -->
     <div id="comment-list">
